@@ -16,12 +16,22 @@ import {
 import { TbApi } from "react-icons/tb";
 import { IoHardwareChipOutline } from "react-icons/io5";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 export default function AboutSection({ darkMode }) {
   const controls = useAnimation();
   const sectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Skill icons mapping
   const skillIcons = {
@@ -95,20 +105,28 @@ export default function AboutSection({ darkMode }) {
   return (
     <section
       id="about"
-      className="relative py-20 px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
+      className="relative py-12 xs:py-16 sm:py-20 px-4 xs:px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
       ref={sectionRef}
     >
+      {/* Static background that changes instantly */}
+      <div
+        className="absolute inset-0 -z-30 transition-none"
+        style={{
+          backgroundColor: darkMode ? "#111827" : "#f8fafc",
+        }}
+      />
+
       {/* Background elements - more subtle */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute rounded-full blur-xl ${
             darkMode ? "bg-emerald-900/10" : "bg-emerald-100/50"
-          }`}
+          } transition-none`}
           style={{
-            width: "400px",
-            height: "400px",
-            left: "10%",
-            top: "20%",
+            width: isMobile ? "300px" : "400px",
+            height: isMobile ? "300px" : "400px",
+            left: isMobile ? "5%" : "10%",
+            top: isMobile ? "10%" : "20%",
           }}
         />
       </div>
@@ -119,14 +137,14 @@ export default function AboutSection({ darkMode }) {
         variants={containerVariants}
         className="relative z-10"
       >
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <motion.h2
             variants={itemVariants}
-            className={`text-4xl font-bold mb-4 bg-gradient-to-r ${
+            className={`text-3xl xs:text-4xl sm:text-5xl font-bold mb-3 xs:mb-4 bg-gradient-to-r ${
               darkMode
                 ? "from-emerald-300 to-teal-300"
                 : "from-emerald-600 to-teal-600"
-            } bg-clip-text text-transparent inline-block`}
+            } bg-clip-text text-transparent inline-block transition-colors duration-100`}
           >
             About Me
           </motion.h2>
@@ -135,13 +153,13 @@ export default function AboutSection({ darkMode }) {
               hidden: { opacity: 0, scaleX: 0 },
               visible: { opacity: 1, scaleX: 1 },
             }}
-            className="w-20 h-1 mx-auto bg-gradient-to-r from-emerald-400 to-teal-400 mb-8 rounded-full"
+            className="w-16 xs:w-20 h-1 mx-auto bg-gradient-to-r from-emerald-400 to-teal-400 mb-6 sm:mb-8 rounded-full"
           />
           <motion.p
             variants={itemVariants}
-            className={`text-xl max-w-3xl mx-auto ${
+            className={`text-base xs:text-lg sm:text-xl max-w-3xl mx-auto px-2 ${
               darkMode ? "text-gray-300" : "text-gray-600"
-            } leading-relaxed`}
+            } leading-relaxed transition-colors duration-100`}
           >
             I'm a passionate{" "}
             <span
@@ -155,19 +173,19 @@ export default function AboutSection({ darkMode }) {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Professional Image Section */}
+        <div className="flex flex-col md:flex-row gap-8 sm:gap-10 md:gap-12 items-start">
+          {/* Professional Image Section - Now more prominent */}
           <motion.div
             variants={{
               hidden: { opacity: 0, x: -20 },
               visible: { opacity: 1, x: 0 },
             }}
-            className="relative"
+            className="w-full md:w-1/2 lg:w-2/5 relative"
           >
-            <div className="relative rounded-xl overflow-hidden aspect-square w-full h-full min-h-[380px] border border-gray-200 dark:border-gray-700/50 shadow-sm">
+            <div className="relative rounded-xl overflow-hidden aspect-square w-full h-full min-h-[300px] xs:min-h-[350px] sm:min-h-[400px] border border-gray-200 dark:border-gray-700/50 shadow-lg transition-colors duration-100">
               <Image
                 src="/1.png"
-                alt="Profile Picture"
+                alt="Aditya Thodsare"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -181,22 +199,41 @@ export default function AboutSection({ darkMode }) {
             </div>
           </motion.div>
 
-          <motion.div variants={containerVariants} className="space-y-8">
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className={`text-2xl font-semibold mb-6 ${
+          {/* Content Section */}
+          <motion.div
+            variants={containerVariants}
+            className="w-full md:w-1/2 lg:w-3/5 space-y-6 sm:space-y-8"
+          >
+            <motion.div
+              variants={itemVariants}
+              className={`p-6 rounded-xl ${
+                darkMode
+                  ? "bg-gray-800/40 border border-gray-700/50"
+                  : "bg-white border border-gray-200"
+              } transition-colors duration-100 shadow-sm`}
+            >
+              <h3
+                className={`text-xl sm:text-2xl font-semibold mb-4 ${
                   darkMode ? "text-white" : "text-gray-800"
-                }`}
+                } transition-colors duration-100`}
               >
-                Personal Details
-              </motion.h3>
-              <div className="grid grid-cols-1 gap-3">
+                Quick Introduction
+              </h3>
+              <p
+                className={`text-sm sm:text-base ${
+                  darkMode ? "text-gray-300" : "text-gray-600"
+                } transition-colors duration-100 mb-4`}
+              >
+                I specialize in building robust web applications using Spring
+                Boot and React, with additional expertise in IoT systems and
+                FPGA development.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
                 {[
                   {
                     icon: <FiMapPin className="w-5 h-5" />,
                     title: "Location",
-                    content: "Pune/Pimpri-Chinchwad Area, India",
+                    content: "Pune, India",
                   },
                   {
                     icon: <FiMail className="w-5 h-5" />,
@@ -206,112 +243,95 @@ export default function AboutSection({ darkMode }) {
                   {
                     icon: <FiPhone className="w-5 h-5" />,
                     title: "Phone",
-                    content: "8263878470",
+                    content: "+91 8263878470",
                   },
                   {
-                    icon: (
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                        />
-                      </svg>
-                    ),
+                    icon: <IoHardwareChipOutline className="w-5 h-5" />,
                     title: "Education",
-                    content:
-                      "Bachelor of Engineering - BE, Electronics and telecommunication engineering (2022-2026)",
+                    content: "BE in E&TC (2022-2026)",
                   },
                 ].map((item, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    variants={itemVariants}
-                    custom={index}
-                    className={`flex items-start p-4 rounded-lg ${
+                    className={`flex items-center p-3 rounded-lg ${
                       darkMode
-                        ? "bg-gray-800/40 border border-gray-700/50"
-                        : "bg-white border border-gray-200"
-                    } transition-colors duration-200`}
+                        ? "bg-gray-800/30 border border-gray-700/40"
+                        : "bg-gray-50 border border-gray-100"
+                    } transition-colors duration-100`}
                   >
                     <div
-                      className={`p-2 rounded-md mr-4 ${
+                      className={`p-2 rounded-md mr-3 ${
                         darkMode
                           ? "bg-emerald-900/30 text-emerald-400"
                           : "bg-emerald-100 text-emerald-600"
-                      }`}
+                      } transition-colors duration-100`}
                     >
                       {item.icon}
                     </div>
                     <div>
                       <p
-                        className={`font-medium ${
-                          darkMode ? "text-white" : "text-gray-800"
-                        }`}
+                        className={`text-xs font-medium ${
+                          darkMode ? "text-gray-300" : "text-gray-600"
+                        } transition-colors duration-100`}
                       >
                         {item.title}
                       </p>
                       <p
-                        className={darkMode ? "text-gray-400" : "text-gray-600"}
+                        className={`text-xs ${
+                          darkMode ? "text-gray-400" : "text-gray-500"
+                        } transition-colors duration-100`}
                       >
                         {item.content}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className={`text-2xl font-semibold mb-6 ${
+            <motion.div
+              variants={itemVariants}
+              className={`p-6 rounded-xl ${
+                darkMode
+                  ? "bg-gray-800/40 border border-gray-700/50"
+                  : "bg-white border border-gray-200"
+              } transition-colors duration-100 shadow-sm`}
+            >
+              <h3
+                className={`text-xl sm:text-2xl font-semibold mb-4 ${
                   darkMode ? "text-white" : "text-gray-800"
-                }`}
+                } transition-colors duration-100`}
               >
                 Skills & Tools
-              </motion.h3>
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-2 sm:grid-cols-3 gap-3"
-              >
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
                   "Spring Boot",
-                  "Spring Security",
-                  "REST APIs",
                   "React.js",
-                  "Next.js",
                   "Java",
                   "JavaScript",
+                  "Next.js",
+                  "REST APIs",
                   "MySQL",
                   "MongoDB",
                   "IoT",
-                  "FPGA",
-                  "UI/UX Design",
+                  "Spring Security",
                   "Tailwind CSS",
-                  "VS Code",
-                  "Intelij IDEA",
                   "GitHub",
                   "Docker",
+                  "FPGA",
+                  "VS Code",
+                  "UI/UX Design",
                   "Arduino IDE",
-                  "ChatGPT",
                   "AI Tools",
                 ].map((skill, index) => (
-                  <motion.div
+                  <div
                     key={skill}
-                    variants={itemVariants}
-                    custom={index}
-                    className={`flex items-center p-3 rounded-lg ${
+                    className={`flex items-center p-2 sm:p-3 rounded-lg ${
                       darkMode
-                        ? "bg-gray-800/40 border border-gray-700/50"
-                        : "bg-white border border-gray-200"
-                    } transition-colors duration-200`}
+                        ? "bg-gray-800/30 border border-gray-700/40"
+                        : "bg-gray-50 border border-gray-100"
+                    } transition-colors duration-100`}
                   >
                     <div className="mr-2 text-lg">
                       {skillIcons[skill] || (
@@ -319,16 +339,16 @@ export default function AboutSection({ darkMode }) {
                       )}
                     </div>
                     <span
-                      className={`text-sm font-medium ${
+                      className={`text-xs sm:text-sm font-medium ${
                         darkMode ? "text-gray-200" : "text-gray-700"
-                      }`}
+                      } transition-colors duration-100`}
                     >
                       {skill}
                     </span>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
