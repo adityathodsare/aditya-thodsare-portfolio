@@ -2,11 +2,11 @@ export default function ExperienceSection({ darkMode }) {
   return (
     <section
       id="experience"
-      className="py-24 px-6 sm:px-8 lg:px-10 max-w-7xl mx-auto"
+      className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
     >
-      <div className="text-center mb-16">
+      <div className="text-center mb-12 md:mb-16">
         <h2
-          className={`text-4xl font-bold mb-4 bg-gradient-to-r ${
+          className={`text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r ${
             darkMode
               ? "from-emerald-400 to-teal-300"
               : "from-emerald-600 to-teal-500"
@@ -14,8 +14,8 @@ export default function ExperienceSection({ darkMode }) {
         >
           Professional Journey
         </h2>
-        <div className="w-24 h-1 mx-auto bg-gradient-to-r from-emerald-400 to-teal-400 mb-8 rounded-full"></div>
-        <p className="text-xl max-w-3xl mx-auto dark:text-gray-300 text-gray-700 leading-relaxed">
+        <div className="w-20 sm:w-24 h-1 mx-auto bg-gradient-to-r from-emerald-400 to-teal-400 mb-6 sm:mb-8 rounded-full"></div>
+        <p className="text-lg sm:text-xl max-w-3xl mx-auto dark:text-gray-300 text-gray-700 leading-relaxed">
           My career path and the valuable experiences I've gained along the way
         </p>
       </div>
@@ -23,18 +23,19 @@ export default function ExperienceSection({ darkMode }) {
       <div className="relative">
         {/* Timeline line */}
         <div
-          className={`absolute left-6 md:left-1/2 h-full w-0.5 transform -translate-x-1/2 ${
+          className={`hidden md:block absolute left-6 md:left-1/2 h-full w-0.5 transform -translate-x-1/2 ${
             darkMode ? "bg-gray-700" : "bg-gray-300"
           }`}
         ></div>
 
         {/* Experience items */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
+          {/* Experience Item 1 */}
           <div className="relative flex flex-col md:flex-row items-center">
-            <div className="hidden md:block md:w-1/2 pr-12"></div>
-            <div className="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white absolute left-0 md:left-1/2 transform -translate-x-1/2">
+            <div className="hidden md:block md:w-1/2 pr-8 lg:pr-12"></div>
+            <div className="z-10 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-500 text-white absolute left-0 md:left-1/2 transform -translate-x-1/2">
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -48,25 +49,25 @@ export default function ExperienceSection({ darkMode }) {
                 ></path>
               </svg>
             </div>
-            <div className="md:w-1/2 md:pl-12">
+            <div className="md:w-1/2 md:pl-8 lg:pl-12 mt-6 md:mt-0">
               <div
-                className={`p-8 rounded-2xl shadow-xl transition-all hover:shadow-2xl ${
+                className={`p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl transition-all hover:shadow-2xl ${
                   darkMode
                     ? "bg-gray-800 hover:bg-gray-750"
                     : "bg-white hover:bg-gray-50"
                 }`}
               >
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2 sm:gap-0">
                   <div>
-                    <h3 className="text-xl font-bold dark:text-white text-gray-800">
+                    <h3 className="text-lg sm:text-xl font-bold dark:text-white text-gray-800">
                       Java Full Stack Developer Intern
                     </h3>
-                    <p className="text-lg dark:text-emerald-400 text-emerald-600">
+                    <p className="text-md sm:text-lg dark:text-emerald-400 text-emerald-600">
                       Shorat Innovations Pvt Ltd
                     </p>
                   </div>
                   <div
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-medium ${
                       darkMode
                         ? "bg-emerald-900/40 text-emerald-400"
                         : "bg-emerald-100 text-emerald-600"
@@ -75,10 +76,10 @@ export default function ExperienceSection({ darkMode }) {
                     Jan 2025 - Apr 2025
                   </div>
                 </div>
-                <ul className="mt-4 space-y-3 dark:text-gray-300 text-gray-600">
+                <ul className="mt-4 space-y-2 sm:space-y-3 dark:text-gray-300 text-gray-600 text-sm sm:text-base">
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -89,7 +90,7 @@ export default function ExperienceSection({ darkMode }) {
                   </li>
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -100,7 +101,7 @@ export default function ExperienceSection({ darkMode }) {
                   </li>
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -111,7 +112,7 @@ export default function ExperienceSection({ darkMode }) {
                   </li>
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -127,25 +128,25 @@ export default function ExperienceSection({ darkMode }) {
 
           {/* Education */}
           <div className="relative flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 pr-12">
+            <div className="md:w-1/2 pr-8 lg:pr-12 order-2 md:order-1">
               <div
-                className={`p-8 rounded-2xl shadow-xl transition-all hover:shadow-2xl ${
+                className={`p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl transition-all hover:shadow-2xl ${
                   darkMode
                     ? "bg-gray-800 hover:bg-gray-750"
                     : "bg-white hover:bg-gray-50"
                 }`}
               >
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2 sm:gap-0">
                   <div>
-                    <h3 className="text-xl font-bold dark:text-white text-gray-800">
-                      Bachelor of Engineering
+                    <h3 className="text-lg sm:text-xl font-bold dark:text-white text-gray-800">
+                      Bachelor of Engineering (CGPA: 9.43/10)
                     </h3>
-                    <p className="text-lg dark:text-emerald-400 text-emerald-600">
+                    <p className="text-md sm:text-lg dark:text-emerald-400 text-emerald-600">
                       Electronics and Telecommunication
                     </p>
                   </div>
                   <div
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-medium ${
                       darkMode
                         ? "bg-emerald-900/40 text-emerald-400"
                         : "bg-emerald-100 text-emerald-600"
@@ -154,10 +155,10 @@ export default function ExperienceSection({ darkMode }) {
                     2022 - 2026
                   </div>
                 </div>
-                <ul className="mt-4 space-y-3 dark:text-gray-300 text-gray-600">
+                <ul className="mt-4 space-y-2 sm:space-y-3 dark:text-gray-300 text-gray-600 text-sm sm:text-base">
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -168,7 +169,7 @@ export default function ExperienceSection({ darkMode }) {
                   </li>
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -178,7 +179,7 @@ export default function ExperienceSection({ darkMode }) {
                   </li>
                   <li className="flex items-start">
                     <span
-                      className={`inline-block mr-2 mt-1 w-2 h-2 rounded-full ${
+                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
                         darkMode ? "bg-emerald-400" : "bg-emerald-500"
                       }`}
                     ></span>
@@ -190,9 +191,9 @@ export default function ExperienceSection({ darkMode }) {
                 </ul>
               </div>
             </div>
-            <div className="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white absolute left-0 md:left-1/2 transform -translate-x-1/2">
+            <div className="z-10 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-500 text-white absolute left-0 md:left-1/2 transform -translate-x-1/2 order-1 md:order-2">
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5 sm:w-6 sm:h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -208,8 +209,58 @@ export default function ExperienceSection({ darkMode }) {
                 ></path>
               </svg>
             </div>
-            <div className="hidden md:block md:w-1/2 pl-12"></div>
+            <div className="hidden md:block md:w-1/2 pl-8 lg:pl-12 order-3"></div>
           </div>
+        </div>
+        {/* Contact Button with Green Blend */}
+        <div className="mt-16 md:mt-20 text-center">
+          <a
+            href="#contact"
+            className={`relative inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 overflow-hidden font-medium rounded-full group ${
+              darkMode ? "text-amber-50" : "text-black"
+            }`}
+          >
+            <span
+              className={`absolute inset-0 w-full h-full transition-all duration-300 ease-out ${
+                darkMode
+                  ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"
+                  : "bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"
+              } group-hover:opacity-90 rounded-full`}
+            ></span>
+            <span className="absolute inset-0 w-full h-full rounded-full opacity-5 bg-black"></span>
+            <span className="relative flex items-center text-sm sm:text-base font-semibold">
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                ></path>
+              </svg>
+              Send Message
+            </span>
+            <span
+              className={`absolute inset-0 border-2 border-transparent rounded-full group-hover:border-white/30 ${
+                darkMode
+                  ? "group-hover:border-white/30"
+                  : "group-hover:border-black/10"
+              }`}
+            ></span>
+            {/* Glow effect */}
+            <span
+              className={`absolute -inset-1 opacity-20 blur-md ${
+                darkMode
+                  ? "bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400"
+                  : "bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"
+              } rounded-full animate-pulse`}
+            ></span>
+          </a>
         </div>
       </div>
     </section>
