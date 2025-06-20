@@ -15,6 +15,16 @@ export default function ContactSection({ darkMode }) {
       id="contact"
       className="py-16 md:py-24 px-6 sm:px-8 lg:px-10 max-w-7xl mx-auto"
     >
+      {/* Force black text in light mode with !important */}
+      <style jsx>{`
+        .light-mode-text {
+          color: #000 !important;
+        }
+        .light-mode-bg {
+          background-color: #fff !important;
+        }
+      `}</style>
+
       <div className="text-center mb-12 md:mb-16">
         <h2
           className={`text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r ${
@@ -26,217 +36,196 @@ export default function ContactSection({ darkMode }) {
           Get In Touch
         </h2>
         <div className="w-20 md:w-24 h-1 mx-auto bg-gradient-to-r from-emerald-400 to-teal-400 mb-6 md:mb-8 rounded-full"></div>
-        <p className="text-lg md:text-xl max-w-3xl mx-auto dark:text-gray-300 text-gray-700 leading-relaxed">
+        <p
+          className={`text-lg md:text-xl max-w-3xl mx-auto ${
+            darkMode ? "text-gray-300" : "light-mode-text"
+          } leading-relaxed`}
+        >
           Have a project in mind or want to discuss potential opportunities? I'd
           love to hear from you!
         </p>
       </div>
 
       <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12">
-        {/* Contact Information - Now appears first on mobile */}
+        {/* Contact Information */}
         <div className="mt-8 md:mt-0">
           <div
             className={`p-6 md:p-8 rounded-2xl shadow-xl ${
-              darkMode ? "bg-gray-800" : "bg-white"
+              darkMode ? "bg-gray-800" : "light-mode-bg"
             }`}
           >
-            <h3 className="text-xl md:text-2xl font-bold mb-6 dark:text-white text-gray-800">
+            <h3
+              className={`text-xl md:text-2xl font-bold mb-6 ${
+                darkMode ? "text-white" : "light-mode-text"
+              }`}
+            >
               Contact Information
             </h3>
 
-            <div className="space-y-4 md:space-y-6">
-              <div className="flex items-start">
-                <div
-                  className={`p-2 md:p-3 rounded-xl mr-3 md:mr-4 ${
-                    darkMode
-                      ? "bg-emerald-900/30 text-emerald-400"
-                      : "bg-emerald-100 text-emerald-600"
-                  }`}
-                >
-                  <FiPhone className="w-5 h-5 md:w-6 md:h-6" />
+            <div className="space-y-4">
+              {[
+                {
+                  icon: <FiPhone className="w-6 h-6" />,
+                  label: "Phone",
+                  text: "+91 8263878470",
+                },
+                {
+                  icon: <FiMail className="w-6 h-6" />,
+                  label: "Email",
+                  text: "thodsareaditya@gmail.com",
+                },
+                {
+                  icon: <FiMapPin className="w-6 h-6" />,
+                  label: "Location",
+                  text: "Pune/Pimpri-Chinchwad Area, India",
+                },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start">
+                  <div
+                    className={`p-3 rounded-xl mr-4 ${
+                      darkMode
+                        ? "bg-emerald-900/30 text-emerald-400"
+                        : "bg-emerald-100 text-emerald-600"
+                    }`}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p
+                      className={`font-medium ${
+                        darkMode ? "text-white" : "light-mode-text"
+                      }`}
+                    >
+                      {item.label}
+                    </p>
+                    <p
+                      className={darkMode ? "text-gray-400" : "light-mode-text"}
+                    >
+                      {item.text}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium dark:text-white text-gray-800 text-sm md:text-base">
-                    Phone
-                  </h4>
-                  <p className="dark:text-gray-400 text-gray-600 text-sm md:text-base">
-                    +91 8263878470
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div
-                  className={`p-2 md:p-3 rounded-xl mr-3 md:mr-4 ${
-                    darkMode
-                      ? "bg-emerald-900/30 text-emerald-400"
-                      : "bg-emerald-100 text-emerald-600"
-                  }`}
-                >
-                  <FiMail className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-                <div>
-                  <h4 className="font-medium dark:text-white text-gray-800 text-sm md:text-base">
-                    Email
-                  </h4>
-                  <p className="dark:text-gray-400 text-gray-600 text-sm md:text-base">
-                    thodsareaditya@gmail.com
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div
-                  className={`p-2 md:p-3 rounded-xl mr-3 md:mr-4 ${
-                    darkMode
-                      ? "bg-emerald-900/30 text-emerald-400"
-                      : "bg-emerald-100 text-emerald-600"
-                  }`}
-                >
-                  <FiMapPin className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-                <div>
-                  <h4 className="font-medium dark:text-white text-gray-800 text-sm md:text-base">
-                    Location
-                  </h4>
-                  <p className="dark:text-gray-400 text-gray-600 text-sm md:text-base">
-                    Pune/Pimpri-Chinchwad Area, India
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="mt-8 md:mt-12">
-              <h4 className="font-medium dark:text-white text-gray-800 mb-3 md:mb-4 text-sm md:text-base">
+            {/* Social Links Section */}
+            <div className="mt-8">
+              <h4
+                className={`font-medium mb-4 ${
+                  darkMode ? "text-white" : "light-mode-text"
+                }`}
+              >
                 Connect with me
               </h4>
-              <div className="flex space-x-3 md:space-x-4">
+              <div className="flex space-x-4">
                 <a
                   href="https://linkedin.com/in/adityathodsare-475366289"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 md:p-3 rounded-xl transition-all hover:transform hover:-translate-y-1 ${
+                  className={`p-3 rounded-xl transition-all hover:transform hover:-translate-y-1 ${
                     darkMode
                       ? "bg-gray-700 hover:bg-emerald-600 text-white hover:shadow-lg hover:shadow-emerald-500/20"
-                      : "bg-gray-200 hover:bg-emerald-600 text-gray-700 hover:text-white hover:shadow-lg hover:shadow-emerald-500/20"
+                      : "bg-gray-200 hover:bg-emerald-600 text-gray-900 hover:text-white hover:shadow-lg hover:shadow-emerald-500/20"
                   }`}
                 >
-                  <FiLinkedin className="w-5 h-5 md:w-6 md:h-6" />
+                  <FiLinkedin className="w-6 h-6" />
                 </a>
                 <a
                   href="https://github.com/adityathodsare"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 md:p-3 rounded-xl transition-all hover:transform hover:-translate-y-1 ${
+                  className={`p-3 rounded-xl transition-all hover:transform hover:-translate-y-1 ${
                     darkMode
                       ? "bg-gray-700 hover:bg-emerald-600 text-white hover:shadow-lg hover:shadow-emerald-500/20"
-                      : "bg-gray-200 hover:bg-emerald-600 text-gray-700 hover:text-white hover:shadow-lg hover:shadow-emerald-500/20"
+                      : "bg-gray-200 hover:bg-emerald-600 text-gray-900 hover:text-white hover:shadow-lg hover:shadow-emerald-500/20"
                   }`}
                 >
-                  <FiGithub className="w-5 h-5 md:w-6 md:h-6" />
+                  <FiGithub className="w-6 h-6" />
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Message Form - Now appears below contact info on mobile */}
+        {/* Message Form */}
         <div>
           <form
             className={`p-6 md:p-8 rounded-2xl shadow-xl ${
-              darkMode ? "bg-gray-800" : "bg-white"
+              darkMode ? "bg-gray-800" : "light-mode-bg"
             }`}
           >
-            <div className="mb-4 md:mb-6">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium mb-2 dark:text-gray-300 text-gray-600"
-              >
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className={`w-full px-3 py-2 md:px-4 md:py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
-                  darkMode
-                    ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                    : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
-                }`}
-                placeholder="John Doe"
-                required
-              />
-            </div>
-
-            <div className="mb-4 md:mb-6">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium mb-2 dark:text-gray-300 text-gray-600"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                className={`w-full px-3 py-2 md:px-4 md:py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
-                  darkMode
-                    ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                    : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
-                }`}
-                placeholder="john@example.com"
-                required
-              />
-            </div>
-
-            <div className="mb-4 md:mb-6">
-              <label
-                htmlFor="subject"
-                className="block text-sm font-medium mb-2 dark:text-gray-300 text-gray-600"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className={`w-full px-3 py-2 md:px-4 md:py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
-                  darkMode
-                    ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                    : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
-                }`}
-                placeholder="Project Inquiry"
-                required
-              />
-            </div>
-
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium mb-2 dark:text-gray-300 text-gray-600"
-              >
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                rows="4"
-                className={`w-full px-3 py-2 md:px-4 md:py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
-                  darkMode
-                    ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                    : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
-                }`}
-                placeholder="Hello Aditya, I'd like to discuss..."
-                required
-              ></textarea>
-            </div>
+            {[
+              {
+                id: "name",
+                label: "Your Name",
+                placeholder: "John Doe",
+                type: "text",
+              },
+              {
+                id: "email",
+                label: "Email Address",
+                placeholder: "john@example.com",
+                type: "email",
+              },
+              {
+                id: "subject",
+                label: "Subject",
+                placeholder: "Project Inquiry",
+                type: "text",
+              },
+              {
+                id: "message",
+                label: "Your Message",
+                placeholder: "Hello Aditya, I'd like to discuss...",
+                type: "textarea",
+              },
+            ].map((field) => (
+              <div key={field.id} className="mb-6">
+                <label
+                  htmlFor={field.id}
+                  className={`block text-sm font-medium mb-2 ${
+                    darkMode ? "text-gray-300" : "light-mode-text"
+                  }`}
+                >
+                  {field.label}
+                </label>
+                {field.type === "textarea" ? (
+                  <textarea
+                    id={field.id}
+                    rows="5"
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
+                      darkMode
+                        ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                        : "light-mode-bg border-gray-300 light-mode-text placeholder-gray-400"
+                    }`}
+                    placeholder={field.placeholder}
+                    required
+                  ></textarea>
+                ) : (
+                  <input
+                    type={field.type}
+                    id={field.id}
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all ${
+                      darkMode
+                        ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                        : "light-mode-bg border-gray-300 light-mode-text placeholder-gray-400"
+                    }`}
+                    placeholder={field.placeholder}
+                    required
+                  />
+                )}
+              </div>
+            ))}
 
             <button
               type="submit"
-              className={`w-full py-2 md:py-3 px-4 md:px-6 rounded-lg font-medium transition-all transform hover:-translate-y-0.5 flex items-center justify-center ${
+              className={`w-full py-3 px-6 rounded-lg font-medium transition-all transform hover:-translate-y-0.5 flex items-center justify-center ${
                 darkMode
                   ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
                   : "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
               }`}
             >
-              <FiSend className="mr-2 w-4 h-4 md:w-5 md:h-5" />
-              <span className="text-sm md:text-base">Send Message</span>
+              <FiSend className="mr-2" /> Send Message
             </button>
           </form>
         </div>
