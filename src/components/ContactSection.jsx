@@ -21,13 +21,16 @@ export default function ContactSection({ darkMode }) {
 
   const handleEmail = async (formData) => {
     try {
-      const response = await fetch("http://localhost:8080/api/contact/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://portfolio-backend-4k5a.onrender.com/api/contact/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
       return data;
