@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import {
   FiMail,
   FiPhone,
@@ -10,6 +10,79 @@ import {
 } from "react-icons/fi";
 
 export default function ContactSection({ darkMode }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Enhanced validation
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        throw new Error("Please enter a valid email address");
+      }
+      if (formData.message.trim().length < 10) {
+        throw new Error("Message should be at least 10 characters");
+      }
+
+      // Create a timeout mechanism
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbw9rRdEcA1Y5DYmsxaD_UT6SIq3M1_M7CA71Ct7qGpNFHB8vNXjQQynv-QNSRZBKgqe/exec",
+        {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" }, // Google Scripts works better with this
+          body: JSON.stringify(formData),
+          signal: controller.signal,
+        }
+      );
+
+      clearTimeout(timeout);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.error || "Submission failed");
+      }
+
+      setSubmitStatus({
+        success: true,
+        message: "Message sent successfully!",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      setSubmitStatus({
+        success: false,
+        message:
+          error.name === "AbortError"
+            ? "Request timed out. Please try again."
+            : error.message ||
+              "Failed to send message. Please check your connection.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -150,6 +223,7 @@ export default function ContactSection({ darkMode }) {
         {/* Message Form */}
         <div>
           <form
+            onSubmit={handleSubmit}
             className={`p-6 md:p-8 rounded-2xl shadow-xl ${
               darkMode ? "bg-gray-800" : "light-mode-bg"
             }`}
@@ -160,24 +234,32 @@ export default function ContactSection({ darkMode }) {
                 label: "Your Name",
                 placeholder: "John Doe",
                 type: "text",
+                value: formData.name,
+                onChange: handleChange,
               },
               {
                 id: "email",
                 label: "Email Address",
                 placeholder: "john@example.com",
                 type: "email",
+                value: formData.email,
+                onChange: handleChange,
               },
               {
                 id: "subject",
                 label: "Subject",
                 placeholder: "Project Inquiry",
                 type: "text",
+                value: formData.subject,
+                onChange: handleChange,
               },
               {
                 id: "message",
                 label: "Your Message",
                 placeholder: "Hello Aditya, I'd like to discuss...",
                 type: "textarea",
+                value: formData.message,
+                onChange: handleChange,
               },
             ].map((field) => (
               <div key={field.id} className="mb-6">
@@ -200,6 +282,8 @@ export default function ContactSection({ darkMode }) {
                     }`}
                     placeholder={field.placeholder}
                     required
+                    value={field.value}
+                    onChange={field.onChange}
                   ></textarea>
                 ) : (
                   <input
@@ -212,20 +296,68 @@ export default function ContactSection({ darkMode }) {
                     }`}
                     placeholder={field.placeholder}
                     required
+                    value={field.value}
+                    onChange={field.onChange}
                   />
                 )}
               </div>
             ))}
 
+            {/* Status message */}
+            {submitStatus && (
+              <div
+                className={`mb-4 p-3 rounded-lg ${
+                  submitStatus.success
+                    ? darkMode
+                      ? "bg-emerald-900/30 text-emerald-400"
+                      : "bg-emerald-100 text-emerald-700"
+                    : darkMode
+                    ? "bg-red-900/30 text-red-400"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <button
               type="submit"
+              disabled={isSubmitting}
               className={`w-full py-3 px-6 rounded-lg font-medium transition-all transform hover:-translate-y-0.5 flex items-center justify-center ${
                 darkMode
                   ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
                   : "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
-              }`}
+              } ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
             >
-              <FiSend className="mr-2" /> Send Message
+              {isSubmitting ? (
+                <>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <FiSend className="mr-2" /> Send Message
+                </>
+              )}
             </button>
           </form>
         </div>
