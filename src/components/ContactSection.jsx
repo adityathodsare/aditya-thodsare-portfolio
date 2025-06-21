@@ -19,6 +19,24 @@ export default function ContactSection({ darkMode }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
+  const handleEmail = async (formData) => {
+    try {
+      const response = await fetch("http://localhost:8080/api/contact/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error sending email:", error);
+      return { success: false, message: "Failed to send email" };
+    }
+  };
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
@@ -38,15 +56,22 @@ export default function ContactSection({ darkMode }) {
         throw new Error("Message should be at least 10 characters");
       }
 
-      // Create a timeout mechanism
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 10000); // 10s timeout
+      // Send email via Spring Boot backend
+      const emailResponse = await handleEmail(formData);
 
-      const response = await fetch(
+      if (!emailResponse.success) {
+        throw new Error(emailResponse.message || "Email submission failed");
+      }
+
+      // Also submit to Google Scripts (keeping your existing functionality)
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+
+      const googleResponse = await fetch(
         "https://script.google.com/macros/s/AKfycbw9rRdEcA1Y5DYmsxaD_UT6SIq3M1_M7CA71Ct7qGpNFHB8vNXjQQynv-QNSRZBKgqe/exec",
         {
           method: "POST",
-          headers: { "Content-Type": "text/plain" }, // Google Scripts works better with this
+          headers: { "Content-Type": "text/plain" },
           body: JSON.stringify(formData),
           signal: controller.signal,
         }
@@ -54,11 +79,11 @@ export default function ContactSection({ darkMode }) {
 
       clearTimeout(timeout);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (!googleResponse.ok) {
+        throw new Error(`HTTP error! status: ${googleResponse.status}`);
       }
 
-      const result = await response.json();
+      const result = await googleResponse.json();
 
       if (!result.success) {
         throw new Error(result.error || "Submission failed");
