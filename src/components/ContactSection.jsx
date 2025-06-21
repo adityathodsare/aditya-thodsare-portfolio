@@ -220,7 +220,7 @@ export default function ContactSection({ darkMode }) {
               </h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://linkedin.com/in/adityathodsare-475366289"
+                  href="https://www.linkedin.com/in/aditya-thodsare-475366289/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`p-3 rounded-xl transition-all hover:transform hover:-translate-y-1 ${

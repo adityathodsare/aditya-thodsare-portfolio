@@ -35,7 +35,7 @@ export default function Footer({ darkMode, activeSection, handleNavClick }) {
 
         <div className="flex justify-center space-x-6 mb-8">
           <a
-            href="https://linkedin.com/in/adityathodsare-475366289"
+            href="https://www.linkedin.com/in/aditya-thodsare-475366289/"
             target="_blank"
             rel="noopener noreferrer"
             className={`p-2 rounded-full transition-all hover:transform hover:-translate-y-1 group ${

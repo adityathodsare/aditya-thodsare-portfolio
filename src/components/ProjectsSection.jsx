@@ -9,13 +9,13 @@ export default function ProjectsSection({ darkMode }) {
       description:
         "An innovative IoT-based solution for real-time vehicle monitoring and emergency alerts, enhancing driver safety.",
       technologies: ["IoT", "Next.js", "Spring Boot", "MySQL", "WebSocket"],
-      image:
-        "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-      githubLink: "https://github.com/adityathodsare/safe-V-Backend",
-      demoLink: "#",
+      image: "/image.png",
+      githubLink: "https://github.com/adityathodsare/safev-frontend-nextjs",
+      demoLink:
+        "https://safev-frontend-nextjs-jefddhzjj-adityathodsares-projects.vercel.app/",
     },
     {
-      title: "User Management",
+      title: "User Management with JWT",
       description:
         "A comprehensive user management system with JWT authentication, role-based access control, and secure password handling.",
       technologies: [
@@ -29,17 +29,17 @@ export default function ProjectsSection({ darkMode }) {
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
       githubLink:
         "https://github.com/adityathodsare/spring-security-user-management-with-JWT",
-      demoLink: "#",
+      demoLink:
+        "https://www.linkedin.com/posts/aditya-thodsare-475366289_springboot-springsecurity-jwt-activity-7308605498835054596-ANP8?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEX_hRkBUWGwS0w62UxlXfQbiWqh9AcGe6I",
     },
     {
       title: "DevElevate",
       description:
         "A modern course platform built with Next.js and TypeScript, featuring responsive design and interactive learning tools.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-      image:
-        "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+      image: "/develevate.png",
       githubLink: "https://github.com/adityathodsare/devElevate-nexjs-frontend",
-      demoLink: "#",
+      demoLink: "https://dev-elevate-nexjs-frontend.vercel.app/",
     },
   ];
 
