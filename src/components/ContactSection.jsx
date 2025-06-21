@@ -22,7 +22,7 @@ export default function ContactSection({ darkMode }) {
   const handleEmail = async (formData) => {
     try {
       const response = await fetch(
-        "https://portfolio-backend-4k5a.onrender.com/api/contact/send",
+        "https://portfolio-backend-sdhg.onrender.com/api/contact/send",
         {
           method: "POST",
           headers: {
