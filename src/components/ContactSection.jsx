@@ -19,27 +19,6 @@ export default function ContactSection({ darkMode }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleEmail = async (formData) => {
-    try {
-      const response = await fetch(
-        "https://portfolio-backend-sdhg.onrender.com/api/contact/send",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error sending email:", error);
-      return { success: false, message: "Failed to send email" };
-    }
-  };
-
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
@@ -51,7 +30,7 @@ export default function ContactSection({ darkMode }) {
     setSubmitStatus(null);
 
     try {
-      // Enhanced validation
+      // Basic validation
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
         throw new Error("Please enter a valid email address");
       }
@@ -59,18 +38,11 @@ export default function ContactSection({ darkMode }) {
         throw new Error("Message should be at least 10 characters");
       }
 
-      // Send email via Spring Boot backend
-      const emailResponse = await handleEmail(formData);
-
-      if (!emailResponse.success) {
-        throw new Error(emailResponse.message || "Email submission failed");
-      }
-
-      // Also submit to Google Scripts (keeping your existing functionality)
+      // Submit to Google Scripts for storage
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 10000);
 
-      const googleResponse = await fetch(
+      const response = await fetch(
         "https://script.google.com/macros/s/AKfycbw9rRdEcA1Y5DYmsxaD_UT6SIq3M1_M7CA71Ct7qGpNFHB8vNXjQQynv-QNSRZBKgqe/exec",
         {
           method: "POST",
@@ -82,11 +54,11 @@ export default function ContactSection({ darkMode }) {
 
       clearTimeout(timeout);
 
-      if (!googleResponse.ok) {
-        throw new Error(`HTTP error! status: ${googleResponse.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await googleResponse.json();
+      const result = await response.json();
 
       if (!result.success) {
         throw new Error(result.error || "Submission failed");
@@ -94,7 +66,7 @@ export default function ContactSection({ darkMode }) {
 
       setSubmitStatus({
         success: true,
-        message: "Message sent successfully!",
+        message: "Message received successfully!",
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {

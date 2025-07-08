@@ -268,7 +268,7 @@ export default function AboutSection({ darkMode }) {
                   darkMode ? "text-white" : "text-gray-800"
                 }`}
               >
-                Skills & Tools
+                Skills
               </motion.h3>
               <motion.div
                 variants={containerVariants}

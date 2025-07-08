@@ -167,7 +167,7 @@ export default function ExperienceSection({ darkMode }) {
                         darkMode ? "text-white" : "text-gray-800"
                       }`}
                     >
-                      Bachelor of Engineering (CGPA: 9.43/10)
+                      Bachelor of Engineering (CGPA: 9.57/10)
                     </h3>
                     <p
                       className={`text-md sm:text-lg ${
@@ -192,17 +192,6 @@ export default function ExperienceSection({ darkMode }) {
                     darkMode ? "text-gray-300" : "text-gray-600"
                   } text-sm sm:text-base`}
                 >
-                  <li className="flex items-start">
-                    <span
-                      className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
-                        darkMode ? "bg-emerald-400" : "bg-emerald-500"
-                      }`}
-                    ></span>
-                    <span>
-                      Specialized in both hardware (VLSI, FPGA) and software
-                      development
-                    </span>
-                  </li>
                   <li className="flex items-start">
                     <span
                       className={`inline-block mr-2 mt-1 flex-shrink-0 w-2 h-2 rounded-full ${
