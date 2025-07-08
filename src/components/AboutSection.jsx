@@ -30,21 +30,9 @@ export default function AboutSection({ darkMode }) {
     "React.js": <FaReact className="text-blue-400" />,
     "Next.js": <SiNextdotjs className="text-gray-800 dark:text-gray-200" />,
     Java: <FaJava className="text-red-500" />,
-    "Spring Security": <SiSpringboot className="text-green-600" />,
-    IoT: <SiIota className="text-purple-500" />,
-    FPGA: <IoHardwareChipOutline className="text-orange-500" />,
     MySQL: <SiMysql className="text-blue-600" />,
     MongoDB: <SiMongodb className="text-green-500" />,
-    JavaScript: <SiJavascript className="text-yellow-500" />,
-    "UI/UX Design": <SiFigma className="text-purple-600" />,
     "Tailwind CSS": <SiTailwindcss className="text-cyan-500" />,
-    "VS Code": <SiVivaldi className="text-blue-500" />,
-    "Intelij IDEA": <FaJava className="text-purple-600" />,
-    GitHub: <FaGithub className="text-gray-800 dark:text-gray-200" />,
-    Docker: <FaDocker className="text-blue-400" />,
-    "Arduino IDE": <SiArduino className="text-teal-500" />,
-    ChatGPT: <SiOpenai className="text-green-500" />,
-    "AI Tools": <SiOpenai className="text-purple-500" />,
   };
 
   useEffect(() => {
@@ -288,25 +276,13 @@ export default function AboutSection({ darkMode }) {
               >
                 {[
                   "Spring Boot",
-                  "Spring Security",
-                  "REST APIs",
+                  "Java",
                   "React.js",
                   "Next.js",
-                  "Java",
-                  "JavaScript",
                   "MySQL",
+                  "REST APIs",
                   "MongoDB",
-                  "IoT",
-                  "FPGA",
-                  "UI/UX Design",
                   "Tailwind CSS",
-                  "VS Code",
-                  "Intelij IDEA",
-                  "GitHub",
-                  "Docker",
-                  "Arduino IDE",
-                  "ChatGPT",
-                  "AI Tools",
                 ].map((skill, index) => (
                   <motion.div
                     key={skill}
