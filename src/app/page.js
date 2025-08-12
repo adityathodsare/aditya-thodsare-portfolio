@@ -11,37 +11,23 @@ import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 
 export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // Changed to true for dark mode default
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
-  // Set mounted and detect preferred color scheme
+  // Set mounted and detect mobile device
   useEffect(() => {
     setMounted(true);
-
-    // Check for mobile device
     setIsMobile(window.innerWidth < 768);
-
-    // Check for preferred color scheme
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    setDarkMode(prefersDark);
-
-    // Listen for color scheme changes
-    const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleColorSchemeChange = (e) => setDarkMode(e.matches);
-    colorSchemeQuery.addEventListener("change", handleColorSchemeChange);
 
     // Listen for resize events
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
 
     return () => {
-      colorSchemeQuery.removeEventListener("change", handleColorSchemeChange);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -112,7 +98,6 @@ export default function Portfolio() {
       setActiveSection(section);
       const element = document.getElementById(section);
       if (element) {
-        // Better scroll behavior for mobile
         const offset = isMobile ? 80 : 0;
         const top =
           element.getBoundingClientRect().top + window.pageYOffset - offset;
