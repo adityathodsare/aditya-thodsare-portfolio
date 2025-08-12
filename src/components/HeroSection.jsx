@@ -1,4 +1,4 @@
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiGithub, FiLinkedin } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
 
 export default function HeroSection({
@@ -27,6 +27,17 @@ export default function HeroSection({
     if (currentIndex < sections.length - 1) {
       handleNavClick(sections[currentIndex + 1]);
     }
+  };
+
+  const openGithub = () => {
+    window.open("https://github.com/adityathodsare", "_blank");
+  };
+
+  const openLinkedIn = () => {
+    window.open(
+      "https://www.linkedin.com/in/aditya-thodsare-475366289/",
+      "_blank"
+    );
   };
 
   useEffect(() => {
@@ -208,6 +219,40 @@ export default function HeroSection({
             }}
           />
         ))}
+      </div>
+
+      {/* Social Icons - Fixed on the left */}
+      <div className="fixed left-4 sm:left-6 md:left-8 bottom-4 sm:bottom-6 md:bottom-8 flex flex-col gap-3 sm:gap-4 z-50">
+        <button
+          onClick={openGithub}
+          aria-label="GitHub"
+          className={`p-2 sm:p-2.5 rounded-full backdrop-blur-md border hover:shadow-md transition-all ${
+            darkMode
+              ? "bg-gray-800/50 hover:bg-gray-700/70 border-gray-700 hover:border-gray-600"
+              : "bg-white/50 hover:bg-white/70 border-gray-200 hover:border-gray-300"
+          }`}
+        >
+          <FiGithub
+            className={`w-5 h-5 sm:w-6 sm:h-6 ${
+              darkMode ? "text-gray-200" : "text-gray-800"
+            }`}
+          />
+        </button>
+        <button
+          onClick={openLinkedIn}
+          aria-label="LinkedIn"
+          className={`p-2 sm:p-2.5 rounded-full backdrop-blur-md border hover:shadow-md transition-all ${
+            darkMode
+              ? "bg-gray-800/50 hover:bg-gray-700/70 border-gray-700 hover:border-gray-600"
+              : "bg-white/50 hover:bg-white/70 border-gray-200 hover:border-gray-300"
+          }`}
+        >
+          <FiLinkedin
+            className={`w-5 h-5 sm:w-6 sm:h-6 ${
+              darkMode ? "text-gray-200" : "text-gray-800"
+            }`}
+          />
+        </button>
       </div>
 
       <div className="text-center relative z-10">
