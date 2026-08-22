@@ -1,5 +1,5 @@
 ### 👋 About Me
-Full Stack & AI Engineer | B.E. E&TC (CGPA 9.25) | Pune, India
+Full Stack & AI Engineer | B.E. E&TC (CGPA 9.10) | Pune, India
 Building scalable full-stack & AI-powered systems — from real-time IoT platforms to LLM-driven dashboards.
 
 ---
