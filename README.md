@@ -1,3 +1,4 @@
+![Profile views](https://komarev.com/ghpvc/?username=adityathodsare&label=Profile+Views&style=flat-square&color=0e75b6)
 ### 👋 About Me
 Full Stack & AI Engineer | B.E. E&TC (CGPA 9.10) | Pune, India
 Building scalable full-stack & AI-powered systems — from real-time IoT platforms to LLM-driven dashboards.
