@@ -91,10 +91,6 @@ export default function Footer({ activeSection, handleNavClick }) {
       <div className="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm z-10 relative">
         <p>© 2026 Aditya Thodsare // SYSTEM_END</p>
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center font-display">
-        BRUTAL
-      </div>
     </footer>
   );
 }

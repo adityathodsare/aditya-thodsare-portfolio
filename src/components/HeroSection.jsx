@@ -38,8 +38,6 @@ export default function HeroSection({ handleNavClick }) {
         id="home"
         className="min-h-screen flex flex-col justify-center items-center px-4 pt-20 relative overflow-hidden border-b-4 border-black"
       >
-        <div className="absolute top-1/3 left-[10%] w-16 h-16 bg-[var(--color-neo-blue)] border-4 border-black brutal-shadow animate-bounce hidden lg:block rotate-12" />
-        <div className="absolute bottom-1/3 right-[10%] w-24 h-24 bg-[var(--color-neo-pink)] rounded-full border-4 border-black brutal-shadow hidden lg:block animate-pulse" />
         <div className="absolute top-20 right-20 text-9xl opacity-5 font-black select-none pointer-events-none">
           CODE
         </div>
@@ -57,35 +55,44 @@ export default function HeroSection({ handleNavClick }) {
 
           <h1
             ref={addToRefs}
-            className="text-[13vw] md:text-[9vw] leading-[0.8] font-black uppercase tracking-tighter mb-6 reveal mix-blend-darken font-display"
+            className="text-[8vw] sm:text-[6vw] md:text-[5vw] leading-[1.0] font-black uppercase tracking-tighter mb-6 reveal font-display relative z-10 flex flex-col items-center gap-2"
           >
-            FULL STACK<br />
-            <span className="text-white text-stroke-black">DEVELOPER</span>
+            <span className="inline-block bg-[var(--color-neo-yellow)] text-black px-5 py-2 border-4 border-black brutal-shadow-lg rotate-[-1deg] hover:rotate-0 transition-transform duration-300">
+              FULL STACK DEVELOPER
+            </span>
+            <span className="inline-block bg-black text-white px-6 py-2 border-4 border-black brutal-shadow-lg rotate-[1deg] hover:rotate-0 transition-transform duration-300">
+              & AI ENGINEER
+            </span>
           </h1>
 
           <p
             ref={addToRefs}
-            className="font-mono text-lg md:text-2xl max-w-2xl mx-auto mb-10 bg-[var(--color-neo-yellow)] border-2 border-black p-4 brutal-shadow reveal rotate-1"
+            className="font-mono text-lg md:text-xl max-w-3xl mx-auto mb-10 bg-white border-4 border-black p-6 brutal-shadow-lg reveal text-left"
           >
-            I build robust applications that solve real-world problems.
+            I build robust full-stack applications and <span className="bg-[var(--color-neo-green)] px-1 border border-black font-bold">automate complex workflows with AI</span> using n8n and Make.
             <br />
             <br />
-            From backend microservices using Spring Boot to responsive frontend
-            experiences using React & Next.js. <br />
-            <b>Java • Spring Boot • React • Next.js</b>
+            From backend microservices in Spring Boot to responsive frontend experiences using React & Next.js.
+            <br />
+            <span className="inline-block mt-3 bg-black text-[var(--color-neo-yellow)] px-3 py-1 text-sm font-bold border border-black">
+              Java • Spring Boot • React • Next.js • n8n & Make AI Automation
+            </span>
           </p>
 
           <div
             ref={addToRefs}
-            className="flex flex-wrap justify-center gap-4 mb-10 font-mono text-sm font-bold reveal"
+            className="flex flex-wrap justify-center gap-3 mb-10 font-mono text-sm font-bold reveal"
           >
-            <span className="bg-[var(--color-neo-green)] text-black px-3 py-1 border-2 border-black brutal-shadow-sm">
+            <span className="bg-[var(--color-neo-green)] text-black px-4 py-2 border-2 border-black brutal-shadow-sm flex items-center gap-1">
               ✔ Open to Work
             </span>
-            <span className="bg-[var(--color-neo-yellow)] text-black px-3 py-1 border-2 border-black brutal-shadow-sm">
+            <span className="bg-[var(--color-neo-yellow)] text-black px-4 py-2 border-2 border-black brutal-shadow-sm flex items-center gap-1">
+              ✔ AI Workflow Automation (n8n & Make)
+            </span>
+            <span className="bg-[var(--color-neo-pink)] text-black px-4 py-2 border-2 border-black brutal-shadow-sm flex items-center gap-1">
               ✔ Scalable Systems
             </span>
-            <span className="bg-[var(--color-neo-white)] text-black px-3 py-1 border-2 border-black brutal-shadow-sm">
+            <span className="bg-[var(--color-neo-white)] text-black px-4 py-2 border-2 border-black brutal-shadow-sm flex items-center gap-1">
               ✔ Cloud & IoT
             </span>
           </div>
@@ -115,9 +122,7 @@ export default function HeroSection({ handleNavClick }) {
       <div className="border-b-4 border-black bg-[var(--color-neo-blue)] py-3 relative z-20">
         <div className="marquee-container font-mono font-bold text-2xl text-white">
           <div className="marquee-content">
-            /// OPEN FOR WORK /// FULL STACK DEVELOPMENT /// SPRING BOOT ///
-            REACT /// MICROSERVICES /// IOT /// SECURE /// OPEN FOR WORK ///
-            FULL STACK DEVELOPMENT ///
+            /// OPEN FOR WORK /// FULL STACK DEVELOPMENT /// SPRING BOOT /// REACT /// AI WORKFLOW AUTOMATION (N8N & MAKE) /// MICROSERVICES /// IOT /// OPEN FOR WORK ///
           </div>
         </div>
       </div>

@@ -2,6 +2,92 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import {
+  SiSpringboot,
+  SiMysql,
+  SiMongodb,
+  SiNextdotjs,
+  SiJenkins,
+  SiN8N,
+  SiMake,
+} from "react-icons/si";
+import { FaJava, FaReact, FaDocker, FaLinux } from "react-icons/fa";
+import { IoHardwareChipOutline } from "react-icons/io5";
+
+const techStack = [
+  {
+    name: "Spring Boot",
+    category: "BACKEND",
+    icon: <SiSpringboot className="text-4xl text-[#6DB33F]" />,
+    color: "#6DB33F",
+  },
+  {
+    name: "Java",
+    category: "LANGUAGE",
+    icon: <FaJava className="text-4xl text-[#ED8B00]" />,
+    color: "#ED8B00",
+  },
+  {
+    name: "n8n (AI Workflows)",
+    category: "AI AUTOMATION",
+    icon: <SiN8N className="text-4xl text-[#FF6C37]" />,
+    color: "#FF6C37",
+  },
+  {
+    name: "Make.com",
+    category: "AI AUTOMATION",
+    icon: <SiMake className="text-4xl text-[#6D00CC]" />,
+    color: "#6D00CC",
+  },
+  {
+    name: "React.js",
+    category: "LIBRARY",
+    icon: <FaReact className="text-4xl text-[#61DAFB]" />,
+    color: "#61DAFB",
+  },
+  {
+    name: "Next.js",
+    category: "FRAMEWORK",
+    icon: <SiNextdotjs className="text-4xl text-white" />,
+    color: "#FFFFFF",
+  },
+  {
+    name: "MySQL",
+    category: "DATABASE",
+    icon: <SiMysql className="text-4xl text-[#4479A1]" />,
+    color: "#4479A1",
+  },
+  {
+    name: "MongoDB",
+    category: "DATABASE",
+    icon: <SiMongodb className="text-4xl text-[#47A248]" />,
+    color: "#47A248",
+  },
+  {
+    name: "Docker",
+    category: "CONTAINERS",
+    icon: <FaDocker className="text-4xl text-[#2496ED]" />,
+    color: "#2496ED",
+  },
+  {
+    name: "Jenkins",
+    category: "CI/CD",
+    icon: <SiJenkins className="text-4xl text-[#D24939]" />,
+    color: "#D24939",
+  },
+  {
+    name: "Linux",
+    category: "SYSTEM",
+    icon: <FaLinux className="text-4xl text-[#FCC624]" />,
+    color: "#FCC624",
+  },
+  {
+    name: "IoT / ESP32",
+    category: "HARDWARE",
+    icon: <IoHardwareChipOutline className="text-4xl text-[#00E5FF]" />,
+    color: "#00E5FF",
+  },
+];
 
 export default function AboutSection() {
   const revealRef = useRef([]);
@@ -15,7 +101,7 @@ export default function AboutSection() {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     revealRef.current.forEach((el) => {
@@ -56,35 +142,36 @@ export default function AboutSection() {
               Who am I?
             </h2>
             <p className="font-mono text-xl leading-relaxed mb-6">
-              I am a passionate Full Stack Developer focused on building{" "}
+              I am a passionate Full Stack Developer & AI Automation Engineer focused on building{" "}
               <span className="bg-[var(--color-neo-yellow)] px-1 border border-black text-black">
                 scalable
               </span>{" "}
               and robust applications.
               <br />
               <br />
-              I specialize in backend development using Spring Boot and
-              microservices, along with modern frontend technologies like
-              React.js and Next.js.
+              I specialize in backend microservices using Spring Boot, modern frontend experiences in React & Next.js, and autonomous workflow automation using AI with n8n and Make.com.
               <br />
-              <br />I also build IoT-powered platforms (like SAFE-V)
-              demonstrating real-time monitoring and event-driven architecture.
+              <br />
+              I also build IoT-powered platforms (like SAFE-V) demonstrating real-time monitoring and event-driven architecture.
             </p>
-            <p className="font-mono text-lg mb-8 text-gray-600 border-l-4 border-[var(--color-neo-purple)] pl-4">
-              {">"} Strong foundation in Java & Spring Boot microservices
+
+            <p className="font-mono text-lg mb-8 text-gray-600 border-l-4 border-[var(--color-neo-purple)] pl-4 space-y-1">
+              <span>{">"} Strong foundation in Java & Spring Boot microservices</span>
               <br />
-              {">"} Experience building scalable full-stack web applications
+              <span>{">"} Experience building scalable full-stack web applications</span>
               <br />
-              {">"} Focused on clean UI, performance, and robust backends
+              <span>{">"} Automating complex business workflows with AI using n8n & Make.com</span>
               <br />
-              {">"} IoT enthusiast integrating hardware with the web
+              <span>{">"} Focused on clean UI, performance, and robust backends</span>
+              <br />
+              <span>{">"} IoT enthusiast integrating hardware with web systems</span>
             </p>
 
             <div className="font-mono text-sm bg-[var(--color-neo-green)] border-2 border-black p-3 mb-6 brutal-shadow-sm text-black">
               <strong>
                 ✔ Proven ability to deliver full-stack solutions
-                <br />✔ Passionate about scalable architecture and test
-                automation
+                <br />✔ Automating workflows with AI using n8n & Make.com
+                <br />✔ Passionate about scalable architecture and test automation
               </strong>
             </div>
 
@@ -119,116 +206,37 @@ export default function AboutSection() {
               TECH<span className="text-[var(--color-neo-green)]">_STACK</span>
             </h2>
             <div className="flex items-center gap-2 mb-2 md:mb-4">
-              <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-              <p className="font-mono text-[var(--color-neo-green)] text-sm font-bold"></p>
+              <div className="w-3 h-3 bg-[var(--color-neo-green)] rounded-full animate-pulse" />
+              <p className="font-mono text-[var(--color-neo-green)] text-sm font-bold uppercase">
+                CORE TECHNOLOGIES
+              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {/* Backend */}
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-yellow)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ BACKEND
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                SPRING BOOT
-              </div>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {techStack.map((tech) => (
+              <div
+                key={tech.name}
+                className="group p-5 border-2 border-white/30 hover:border-[var(--color-neo-green)] bg-[#111] hover:bg-black transition-all duration-200 cursor-pointer flex flex-col items-center justify-between min-h-[150px] brutal-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+              >
+                <div className="font-mono text-[10px] tracking-wider text-[var(--color-neo-green)] font-bold uppercase self-start">
+                  {">"}_ {tech.category}
+                </div>
 
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-blue)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ LANGUAGE
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                JAVA
-              </div>
-            </div>
+                <div className="my-2 text-4xl group-hover:scale-110 transition-transform">
+                  {tech.icon}
+                </div>
 
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-purple)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ DATABASE
+                <div className="text-white font-black font-display text-sm uppercase tracking-tight text-center">
+                  {tech.name}
+                </div>
               </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                MYSQL
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-pink)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ DATABASE
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                MONGODB
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-green)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ LIBRARY
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                REACT.JS
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-white hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ FRAMEWORK
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                NEXT.JS
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-orange)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ TOOL
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                DOCKER
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-red)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ CI/CD
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                JENKINS
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-blue)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ SYSTEM
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                LINUX
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-yellow)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ HARDWARE
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase">
-                IOT / ESP32
-              </div>
-            </div>
-
-            <div className="group h-24 border-2 border-white/20 bg-black hover:bg-[var(--color-neo-pink)] hover:border-black transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-              <div className="text-[var(--color-neo-green)] group-hover:text-black font-mono text-xs mb-1 opacity-50">
-                {">"}_ HARDWARE
-              </div>
-              <div className="text-white group-hover:text-black font-black font-display text-xl uppercase text-center leading-none">
-                PCB DESIGN
-              </div>
-            </div>
+            ))}
           </div>
 
-          <div className="border-t-4 border-white mt-8 pt-4 flex justify-between font-mono text-xs text-gray-500">
-            <span>TOTAL_NODES: 10</span>
-            <span>MEMORY_USAGE: 64MB</span>
+          <div className="border-t-4 border-white mt-8 pt-4 flex flex-col sm:flex-row justify-between font-mono text-xs text-gray-400 gap-2">
+            <span>TOTAL_NODES: {techStack.length}</span>
+            <span>JAVA • SPRING BOOT • REACT • NEXT.JS • N8N & MAKE AI AUTOMATION</span>
           </div>
         </div>
       </section>

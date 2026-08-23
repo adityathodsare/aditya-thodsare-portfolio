@@ -7,8 +7,9 @@ import {
   SiMongodb,
   SiMysql,
   SiTypescript,
-  SiIot,
   SiFigma,
+  SiN8N,
+  SiMake,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { IoHardwareChipOutline } from "react-icons/io5";
@@ -17,11 +18,13 @@ export default function SkillsIcons({ darkMode }) {
   const skillIcons = {
     "Spring Boot": <SiSpringboot className="text-emerald-500" />,
     "REST APIs": <TbApi className="text-blue-500" />,
+    "n8n AI Workflows": <SiN8N className="text-orange-500" />,
+    "Make Automation": <SiMake className="text-purple-500" />,
     "React.js": <FaReact className="text-blue-400" />,
     "Next.js": <SiNextdotjs className="text-gray-800 dark:text-gray-200" />,
     Java: <FaJava className="text-red-500" />,
     "Spring Security": <SiSpringboot className="text-green-600" />,
-    IoT: <SiIot className="text-purple-500" />,
+    IoT: <IoHardwareChipOutline className="text-purple-500" />,
     VLSI: <IoHardwareChipOutline className="text-yellow-500" />,
     FPGA: <IoHardwareChipOutline className="text-orange-500" />,
     WebSocket: <TbApi className="text-indigo-500" />,
