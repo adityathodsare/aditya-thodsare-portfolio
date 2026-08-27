@@ -1,6 +1,7 @@
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import { Analytics } from "@vercel/analytics/next";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       >
         <CustomCursor />
         {children}
+        <Analytics />
       </body>
     </html>
   );
